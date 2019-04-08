@@ -6,24 +6,36 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { UserServices } from './servicios/user.services';
+import { LoginPage } from '../pages/login/login';
+import { RegistroPage } from '../pages/registro/registro';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    RegistroPage,
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    LoginPage,
+    RegistroPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    UserServices,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
