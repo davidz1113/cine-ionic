@@ -1,14 +1,43 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Pagina principal
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-refresher (ionRefresh)='getPeliculas($event)'>
+    <ion-refresher-content>
+
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab bottom right>
+    <button ion-fab icon-only (click)="dialogoAdd()">
+      <ion-icon name="chatboxes"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let pelicula of peliculas">
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="pelicula.imagen">
+        </ion-avatar>
+        <h2>{{pelicula.titulo}}</h2>
+        <h3>{{pelicula.categoria}}</h3>
+        <p>{{pelicula.numero_estrellas}}</p>
+      </ion-item>
+      <ion-item-options side='right'>
+        <button ion-button icon-only color='secondary' (click)="editarpelicula(pelicula)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color='danger' (click)="deletepelicula(pelicula)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

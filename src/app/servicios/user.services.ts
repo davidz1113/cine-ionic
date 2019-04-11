@@ -25,10 +25,17 @@ export class UserServices {
     }
 
 
-    registrarUsuario(usuarioARegistrar){
+    registrarUsuario(usuarioARegistrar) {
         this.url = 'http://localhost:8080/cine/users';
-        return  this.http.post(this.url, usuarioARegistrar, { headers: this.headers }).pipe
-        (map(res => res.json()))
+        return this.http.post(this.url, usuarioARegistrar, { headers: this.headers }).pipe
+            (map(res => res.json()));
+    }
+
+
+    obtenerTodasPeliculas() {
+        this.url = 'http://localhost:8080/cine/classes/listapeliculas';
+        return this.http.get(this.url, { headers: this.headers })
+            .pipe(map(res => res.json()));
     }
 
 

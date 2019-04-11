@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { RegistroPage } from '../registro/registro';
-import { Headers, Http } from '@angular/http';
-import { map } from 'rxjs/operators';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { User, UserServices } from '../../app/servicios/user.services';
