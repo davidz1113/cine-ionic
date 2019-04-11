@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Http, Headers } from '@angular/http';
-import { map } from 'rxjs/operators';
-import { User } from '../../app/servicios/user.services';
+import { User, UserServices } from '../../app/servicios/user.services';
 
 /**
  * Generated class for the RegistroPage page.
@@ -20,19 +18,15 @@ export class RegistroPage {
   usuarioARegistrar: User = {
     username: "",
     password: "",
+    phone: "",
     name: "",
     email: ""
   }
+
   confirmarContrasenia: string;
-  url: string;
-  headers: Headers;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertContrl: AlertController, public http: Http) {
-    this.headers = new Headers();
-    this.headers.append('X-Parse-REST-API-Key', 'restAPIKey');
-    this.headers.append('X-Parse-Master-Key', 'masterKey');
-    this.headers.append('X-Parse-Application-id', 'Lista1');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertContrl: AlertController, private _userServices: UserServices) {
   }
 
   irALogin() {
@@ -50,9 +44,7 @@ export class RegistroPage {
       return;
     }
 
-    this.url = 'http://localhost:8080/lista/users';
-    this.http.post(this.url, this.usuarioARegistrar, { headers: this.headers }).pipe
-      (map(res => res.json()))
+    this._userServices.registrarUsuario(this.usuarioARegistrar)
       .subscribe(
         response => {
           this.alertContrl.create({
