@@ -48,3 +48,12 @@ export interface User {
     name?: string;
     email?: string;
 }
+
+export interface Peliculas {
+    _id: string,
+    titulo: string,
+    imagen: string,
+    categoria: string,
+    numero_estrellas: number,
+    favorito?: boolean
+}

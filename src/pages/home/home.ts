@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
-import { UserServices } from '../../app/servicios/user.services';
+import { UserServices, Peliculas } from '../../app/servicios/user.services';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -10,7 +10,7 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
 
-  peliculas: any[];
+  peliculas: Peliculas[];
   idUsuario: string;
 
   constructor(public navCtrl: NavController,
@@ -51,6 +51,9 @@ export class HomePage {
   }
 
 
+  ponerFavorito(pelicula) {
+    pelicula.favorito = !pelicula.favorito;
+  }
 
 
 

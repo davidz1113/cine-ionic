@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
+import { EstrellasComponent } from './componentes/estrellas.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpModule } from '@angular/http';
     HomePage,
     LoginPage,
     RegistroPage,
+    EstrellasComponent
   ],
   imports: [
     BrowserModule,

@@ -27,14 +27,30 @@
         </ion-avatar>
         <h2>{{pelicula.titulo}}</h2>
         <h3>{{pelicula.categoria}}</h3>
-        <p>{{pelicula.numero_estrellas}}</p>
+
+        <app-estrellas [numero]='pelicula.numero_estrellas'> </app-estrellas>
+        <!-- <div *ngIf="==4">
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+          <ion-icon name="star"></ion-icon>
+        </div> -->
+
+        <ion-icon name="heart" item-right color='danger' *ngIf="pelicula.favorito"></ion-icon>
       </ion-item>
       <ion-item-options side='right'>
-        <button ion-button icon-only color='secondary' (click)="editarpelicula(pelicula)">
-          <ion-icon name="create"></ion-icon>
+        <button ion-button icon-only color='danger' *ngIf="!pelicula.favorito; else dislike"
+          (click)="ponerFavorito(pelicula)">
+          <ion-icon name="heart"></ion-icon>
         </button>
-        <button ion-button icon-only color='danger' (click)="deletepelicula(pelicula)">
-          <ion-icon name="trash"></ion-icon>
+        <ng-template #dislike>
+          <button ion-button icon-only color='dark' (click)="ponerFavorito(pelicula)">
+            <ion-icon name="thumbs-down"></ion-icon>
+          </button>
+        </ng-template>
+        <button ion-button icon-only (click)="comentarPelicula(pelicula)">
+          <ion-icon name="chatboxes"></ion-icon>
         </button>
       </ion-item-options>
 
