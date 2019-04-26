@@ -38,6 +38,12 @@ export class UserServices {
             .pipe(map(res => res.json()));
     }
 
+    agregarComentario(comentario){
+        this.url = 'http://localhost:8080/cine/classes/comentarios';
+        return this.http.post(this.url, comentario , { headers: this.headers }).pipe(map(res => res.json()))
+
+    }
+
 
 }
 
