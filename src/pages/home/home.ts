@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { UserServices, Peliculas } from '../../app/servicios/user.services';
 import { Storage } from '@ionic/storage';
+import { ComentariosPage } from '../comentarios/comentarios';
 
 @Component({
   selector: 'page-home',
@@ -116,6 +117,12 @@ export class HomePage {
         }
       ]
     }).present();
+  }
+
+
+
+  verComentarios() {
+    this.navCtrl.push(ComentariosPage);
   }
 
 }

@@ -12,6 +12,8 @@ import { RegistroPage } from '../pages/registro/registro';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import { EstrellasComponent } from './componentes/estrellas.component';
+import { ComentariosPage } from '../pages/comentarios/comentarios';
+import { ComentariosServices } from './servicios/comentarios.services';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { EstrellasComponent } from './componentes/estrellas.component';
     HomePage,
     LoginPage,
     RegistroPage,
-    EstrellasComponent
+    EstrellasComponent,
+    ComentariosPage
   ],
   imports: [
     BrowserModule,
@@ -33,11 +36,13 @@ import { EstrellasComponent } from './componentes/estrellas.component';
     HomePage,
     LoginPage,
     RegistroPage,
+    ComentariosPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     UserServices,
+    ComentariosServices,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
